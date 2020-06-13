@@ -24,7 +24,7 @@ class CreateHospitalsTable extends Migration
             $table->integer('helpline')->nullable();
             $table->string('cover_image');
             $table->text('how_to_reach_us')->nullable();
-            $table->bigInteger('to  wn_id');
+            $table->bigInteger('town_id');
             $table->text('services');
             $table->text('facilities');
             $table->boolean('is_suspended')->nullable();
