@@ -19,3 +19,7 @@ Route::get('/doctors', 'WebsiteController@doctors')->name('website.doctors');
 Route::get('/contact', 'WebsiteController@contact')->name('website.contact');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
