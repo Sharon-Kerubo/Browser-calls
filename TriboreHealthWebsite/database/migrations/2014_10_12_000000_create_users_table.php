@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_verified')->nullable();
             $table->boolean('is_suspended')->nullable();
             $table->bigInteger('hospital_id')->nullable();
-            $table->string('specialization')->nullable();
+            $table->bigInteger('specialization_id')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
