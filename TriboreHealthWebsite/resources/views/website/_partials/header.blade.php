@@ -9,21 +9,44 @@
 {{--                                <strong>+522 234 56789</strong></a>--}}
 {{--                        </span>--}}
 {{--                    </span>--}}
+
                     <span class="header-label">
                         <i class="icon-header icon-book-open color_primary"></i>
                         <span class="helper"><a href=""><strong>Book an Appointment</strong></a>
                         </span>
                     </span>
+                    @guest 
                     <span class="header-label">
                         <i class="icon-header icon-users color_primary"></i>
                         <span class="helper"> Don't have an account? <a href=""><strong>Register</strong></a>
                         </span>
                     </span>
                     <span class="header-label header-label_2 bg-color_second color_white">
-                        <a class="color_white" href="javascript:void(0);"><i class="icon-header icon-user"></i>
+                        <a class="color_white" href="{{ route('login') }}"><i class="icon-header icon-user"></i>
                             <span class="helper">LOGIN</span>
                         </a>
                     </span>
+                    @endguest
+                    @auth
+                    <span class="header-label">
+                        <i class="icon-header icon-user color_primary"></i>
+                        <span class="helper"><a href=""><strong>{{ Auth::user()->last_name }}</strong></a>
+                        </span>
+                    </span>
+                
+                    <span class="header-label header-label_2 bg-color_second color_white">
+                        <a class="color_white" href="{{ route('logout') }}" 
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <i class="icon-header icon-user"></i>
+                            <span class="helper">LOGOUT</span>
+                        </a>
+                    </span>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    
+                    </form>
+                    @endauth
                 </div>
                 <form class="hidden-md hidden-lg text-center" id="search-global-mobile" method="get">
                     <input type="text" value="" id="search-mobile" name="s" >

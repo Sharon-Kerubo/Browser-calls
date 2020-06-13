@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('next_of_kin_first_name');
-            $table->string('next_of_kin_last_name');
+            $table->string('next_of_kin_first_name')->nullable();
+            $table->string('next_of_kin_last_name')->nullable();
             $table->string('next_of_kin_email')->nullable();
-            $table->string('next_of_kin_phone');
+            $table->string('next_of_kin_phone')->nullable();
             $table->bigInteger('role_id');
             $table->string('id_number')->nullable();
             $table->string('license_document')->nullable();
