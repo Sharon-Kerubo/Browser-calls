@@ -44,11 +44,13 @@ steps:
   displayName: 'Installing Package Dependencies'
 
 - script: |
+    cd /home/vsts/work/1/s
     php artisan key:generate
     php artisan migrate
   displayName: 'Running Migrations'
 
 - script: |
+    cd /home/vsts/work/1/s
     sudo npm i -g npm
     sudo chown -R vsts:vsts ~/.npm
     sudo chown -R vsts:vsts ~/.config
