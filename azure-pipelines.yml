@@ -33,7 +33,7 @@ steps:
   displayName: 'MySQL Version'
 
 - script: |
-    cp .env.travis .env
+    whereis .env
   displayName: 'Environment Setup'
 
 - script: |
