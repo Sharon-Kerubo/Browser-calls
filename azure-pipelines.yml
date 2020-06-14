@@ -26,8 +26,6 @@ steps:
     sudo curl -s https://getcomposer.org/installer | php
     sudo mv composer.phar /usr/local/bin/composer
     sudo /etc/init.d/mysql start
-    sudo mysql
-    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'GOL_2020';
   displayName: 'Installing System Dependencies'
 
 - script: |
