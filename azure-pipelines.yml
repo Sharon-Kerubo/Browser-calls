@@ -24,8 +24,8 @@ steps:
     sudo apt-get install -y build-essential debconf-utils screen nodejs mysql-server google-chrome-stable
     sudo apt-get install -y unzip xvfb autogen autoconf libtool pkg-config nasm
     sudo /etc/init.d/mysql start
-    sudo mysql -u root -tribore -e "use mysql;"
-    sudo mysql -u root -tribore -e 'create database project_tribore;'
+    sudo mysql
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'GOL_2020';
   displayName: 'Installing System Dependencies'
 
 - script: |
