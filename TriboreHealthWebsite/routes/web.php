@@ -20,6 +20,11 @@ Route::get('/contact', 'WebsiteController@contact')->name('website.contact');
 
 
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'WebsiteController@index')->name('website.home');
+Route::get('/dashboard', 'BackendController@dashboard')->name('backend.dashboard')->middleware('verified');
+Route::get('/personnel-register', 'PersonnelRegisterController@showRegistrationForm')->name('backend.register.personnel');
+Route::post('/p-register', 'PersonnelRegisterController@register')->name('backend.register');
+Route::get('/verify-email', 'PersonnelRegisterController@validate_twilio_verification_token');
+

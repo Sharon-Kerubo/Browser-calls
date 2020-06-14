@@ -16,7 +16,7 @@ class CreateSpecializationsTable extends Migration
         Schema::create('specializations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('is_suspended');
+            $table->boolean('is_suspended')->nullable();
             $table->timestamps();
         });
     }

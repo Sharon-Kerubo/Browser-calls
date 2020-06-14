@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HEALTHCARE Agency</title>
+    <title>{{config('app.name')}}</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <link href="{{asset('website/css/master.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('website/plugins/iview/css/iview.css')}}" type='text/css' media='all' />

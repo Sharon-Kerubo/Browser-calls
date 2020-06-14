@@ -242,6 +242,6 @@
             <p class="block__title"><i class="block__icon icon-note"></i>Do you wanna be part of our doctors team?</p>
             <p class="block__text">JUST REGISTER AS A DOCTOR & YOU’RE DONE!</p>
         </div>
-        <a class="block__btn btn bg-color_second pull-right" href="javascript:void(0);">REGISTER <span class="btn-plus">+</span></a>
+        <a class="block__btn btn bg-color_second pull-right" href="{{route('backend.register.personnel')}}">REGISTER <span class="btn-plus">+</span></a>
     </div>
 @endsection

@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('id_number')->nullable();
             $table->string('license_document')->nullable();
             $table->string('license_no')->nullable();
-            $table->boolean('is_verified')->nullable();
+            $table->boolean('is_verified')->nullable()->default(0);
             $table->boolean('is_suspended')->nullable();
             $table->bigInteger('hospital_id')->nullable();
             $table->bigInteger('specialization_id')->nullable();
