@@ -33,8 +33,6 @@ steps:
   displayName: 'MySQL Version'
 
 - script: |
-    whereis .env
-    ls
   displayName: 'Environment Setup'
 
 - script: |
