@@ -39,6 +39,10 @@ class PersonnelRegisterController extends Controller
 
     public function register(Request $request)
     {
+        request()->validate([
+            'license_document' => 'required',
+            'license_document.*' => 'mimes:pdf'
+        ]);
         if ($files = $request->file('license_document')) {
             $fileName = $request->id_number . "." . $files->getClientOriginalExtension();
             $files->move(public_path('uploads'), $fileName);
