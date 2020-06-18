@@ -16,8 +16,8 @@
                     </small>
                 </h2>
                 <h2 style="visibility: hidden" class="fs-xxl fw-500 mt-4 text-white">
-                    sfddf <br>
-                    sfddf <br>
+                     <br>
+                     <br>
                 </h2>
 
                 <div class="d-sm-flex flex-column align-items-center justify-content-center d-md-block">
