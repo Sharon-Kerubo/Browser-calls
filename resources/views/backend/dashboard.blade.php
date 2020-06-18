@@ -17,8 +17,8 @@
     <!-- Your main content goes below here: -->
 
     <div class="row">
-{{--        @can('managePatients', App\Models\User::class)--}}
-            @if (Auth::user()->roled_id !==1 &&Auth::user()->is_verified == 0)
+        @can('managePatients', App\User::class)
+            @can('accessPortal', App\User::class)
                 <div class="col-xl-12">
                     <div id="panel-1" class="panel">
                         <div class="panel-hdr">
@@ -40,8 +40,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
-{{--        @endcan--}}
-
+            @endcan
+        @endcan
     </div>
 @stop

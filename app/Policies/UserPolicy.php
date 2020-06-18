@@ -10,10 +10,14 @@ class UserPolicy
     use HandlesAuthorization;
 
    function managePatients(User $user){
-        return !$user->role_id->isEqual(1);
+        return $user->role_id !== 1 && $user->role_id !== 4;
    }
 
-   function manageWorkers(User $user){
-       return $user->role_id->isEqual(1);
+   function manageSystem(User $user){
+       return $user->role_id === 1;
+   }
+
+   function accessPortal(User $user){
+       return $user->is_verified === 1;
    }
 }
