@@ -5,11 +5,11 @@ var maxClusterZoomLevel = 11;
 //The URL to the store location data.
 var storeLocationDataUrl = 'website/data/Health_Facilities_in_Kenya.txt';
 
-//The URL to the icon image. 
+//The URL to the icon image.
 var iconImageUrl = 'website/img/hospital.png';
 
 //An array of country region ISO2 values to limit searches to.
-var countrySet = ['KEN'];      
+var countrySet = ['KEN'];
 
 var map, popup, datasource, iconLayer, centerMarker, searchURL;
 var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
@@ -20,7 +20,7 @@ function CreateMap(lat,long) {
         center: [long,lat],
         zoom: 14,
         view: 'Auto',
-    
+
     //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
         authOptions: {
             authType: 'subscriptionKey',
@@ -78,7 +78,7 @@ function CreateMap(lat,long) {
 
         map.sources.add(datasource);
 
-        //Load all the store data now that the data source has been defined. 
+        //Load all the store data now that the data source has been defined.
         loadStoreData();
 
         //Create a bubble layer for rendering clustered data points.
@@ -139,7 +139,7 @@ function CreateMap(lat,long) {
                 map.getCanvasContainer().style.cursor = 'grab';
             });
 
-            //Add a click event to the cluster layer. When someone clicks on a cluster, zoom into it by 2 levels. 
+            //Add a click event to the cluster layer. When someone clicks on a cluster, zoom into it by 2 levels.
             map.events.add('click', clusterBubbleLayer, function (e) {
                 map.setCamera({
                     center: e.position,
@@ -237,7 +237,7 @@ function performSearch() {
             });
         } else {
             document.getElementById('listPanel').innerHTML = '<div class="statusMessage">Unable to find the location you searched for.</div>';
-        } 
+        }
     });
 }
 
@@ -281,7 +281,7 @@ function updateListItems() {
 
     //Check to see if the user is zoomed out a lot. If they are, tell them to zoom in closer, perform a search or press the My Location button.
     if (camera.zoom < maxClusterZoomLevel) {
-        //Close the popup as clusters may be displayed on the map. 
+        //Close the popup as clusters may be displayed on the map.
         popup.close();
 
         listPanel.innerHTML = '<div class="statusMessage">Search for a location, zoom the map, or press the "My Location" button to see individual locations.</div>';
@@ -297,7 +297,7 @@ function updateListItems() {
 
         /*
             Generating HTML for each item that looks like this:
-         
+
             <div class="listItem" onclick="itemSelected('id')">
                 <div class="listItem-title">1 Microsoft Way</div>
                 Redmond, WA 98052<br />
@@ -306,7 +306,7 @@ function updateListItems() {
             </div>
          */
 
-        //Get all the shapes that have been rendered in the bubble layer. 
+        //Get all the shapes that have been rendered in the bubble layer.
         var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
 
         //Create an index of the distances of each shape.
@@ -344,7 +344,7 @@ function updateListItems() {
                 distances[shape.getId()],
                 ' miles away</div>');
         });
-        
+
         listPanel.innerHTML = html.join('');
 
         //Scroll to the top of the list panel incase the user has scrolled down.
@@ -389,7 +389,7 @@ function getOpenTillTime(properties) {
 
 //When a user clicks on a result in the side panel, look up the shape by its id value and show popup.
 function itemSelected(id) {
-    //Get the shape from the data source using it's id. 
+    //Get the shape from the data source using it's id.
     var shape = datasource.getShapeById(id);
     showPopup(shape);
 
@@ -427,15 +427,15 @@ function showPopup(shape) {
 //Convert the closing time into a nicely formated time.
         '<br /><img src="website/img/icons8-email-24.png" title="Email Icon"/><a href="tel:',
         properties['email'],
-        '">', 
+        '">',
         properties['email'],
-        '</a>', 
+        '</a>',
         '<br /><img src="website/img/PhoneIcon.png" title="Phone Icon"/><a href="tel:',
         properties['emergency_number_one'],
-        '">', 
+        '">',
         properties['emergency_number_one'],
         '</a>',
-        //Add the distance information.  
+        //Add the distance information.
         '<br/>', distance,
         ' miles away',
     );
@@ -484,7 +484,7 @@ function initialize() {
         // console.log(p.coords.latitude,p.coords.longitude);
         CreateMap(p.coords.latitude, p.coords.longitude);
       },
-      function(err) {
+      function(error) {
         switch (error.code) {
               case error.PERMISSION_DENIED:
                   alert('User denied the request for Geolocation.');
