@@ -149,7 +149,7 @@
                 });
                 setTimeout(function (event) {
                     location.reload(true);
-                },10000)
+                },100000)
             });
         });
     </script>
