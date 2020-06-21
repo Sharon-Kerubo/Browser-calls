@@ -147,9 +147,9 @@
                         }
                     }
                 });
-                setTimeout(function (event) {
-                    location.reload(true);
-                },100000)
+                // setTimeout(function (event) {
+                //     location.reload(true);
+                // },100000)
             });
         });
     </script>

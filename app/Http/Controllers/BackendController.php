@@ -91,6 +91,7 @@ class BackendController extends Controller
     }
     public function migrate_hospitals()
     {
+        set_time_limit(10000000);
         Excel::import(new HospitalsImport, public_path('website/data/data.csv'));
 
         return response()->json(['ok'=>'true','msg'=>'Hospitals Imported Successfully']);
