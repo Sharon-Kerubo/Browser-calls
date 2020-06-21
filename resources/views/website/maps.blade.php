@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('website/css/map.css')}}" type="text/css">
-    <script src="{{ asset('website/js/map.js')}}"></script>
+    <link rel="stylesheet" href="{{ secure_asset('website/css/map.css')}}" type="text/css">
+    <script src="{{ secure_asset('website/js/map.js')}}"></script>
 </head>
 <body>
     <header>
@@ -27,6 +27,6 @@
         <div id="myMap"></div>
         <button id="myLocationBtn" title="My Location"></button>
     </main>
-    
+
 </body>
 </html>
