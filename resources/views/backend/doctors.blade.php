@@ -56,4 +56,42 @@
 
 @stop
 @push('backend-scripts')
+    <script>
+        $(()=>{
+            const doctors_table = $('#table_doctors');
+            const d_table = doctors_table.DataTable({
+                'ajax': {
+                    url: "{{ route('backend.get.doctors') }}",
+                    dataSrc: ''
+                },
+                columns: [
+                    {data: 'number'},
+                    {data: 'full_name'},
+                    {data: 'phone_number'},
+                    {data: 'email'},
+                    {data: 'license_no'},
+                    {data: 'hospital_name'},
+                ]
+            });
+            console.log(d_table);
+
+        {{--const doctors_datatable = doctors_table.DataTable({--}}
+            {{--    ajax: {--}}
+            {{--        url: "{{ route('backend.get.doctors') }}",--}}
+            {{--        dataType:'json',--}}
+            {{--        dataSrc: ''--}}
+            {{--    },--}}
+            {{--    columns: [--}}
+            {{--        {data: 'number'},--}}
+            {{--        {data: 'full_name'},--}}
+            {{--        {data: 'phone_number'},--}}
+            {{--        {data: 'email'},--}}
+            {{--        {data: 'license_no'},--}}
+            {{--        {data: 'license_doc'},--}}
+            {{--        {data: 'hospital_name'},--}}
+            {{--        {data: 'actionss'},--}}
+            {{--    ]--}}
+            {{--});--}}
+        })
+    </script>
 @endpush

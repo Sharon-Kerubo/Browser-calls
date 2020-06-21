@@ -240,45 +240,6 @@
 
 {{--<script type="text/javascript" src="{{asset('jquery/jquery-3.5.1.min.js')}}"></script>--}}
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
-<script>
-    $(()=>{
-        const doctors_table = $('#table_doctors');
-        const d_table = doctors_table.DataTable({
-            'ajax': {
-                url: "{{ route('backend.get.doctors') }}",
-                dataSrc: ''
-            },
-            columns: [
-                {data: 'number'},
-                {data: 'full_name'},
-                {data: 'phone_number'},
-                {data: 'email'},
-                {data: 'license_no'},
-                {data: 'hospital_name'},
-            ]
-        });
-        console.log(d_table);
-
-        {{--const doctors_datatable = doctors_table.DataTable({--}}
-        {{--    ajax: {--}}
-        {{--        url: "{{ route('backend.get.doctors') }}",--}}
-        {{--        dataType:'json',--}}
-        {{--        dataSrc: ''--}}
-        {{--    },--}}
-        {{--    columns: [--}}
-        {{--        {data: 'number'},--}}
-        {{--        {data: 'full_name'},--}}
-        {{--        {data: 'phone_number'},--}}
-        {{--        {data: 'email'},--}}
-        {{--        {data: 'license_no'},--}}
-        {{--        {data: 'license_doc'},--}}
-        {{--        {data: 'hospital_name'},--}}
-        {{--        {data: 'actionss'},--}}
-        {{--    ]--}}
-        {{--});--}}
-    })
-</script>
-
 @stack('backend-scripts')
 
 <script>
