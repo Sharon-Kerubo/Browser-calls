@@ -24,6 +24,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend/img/favicon/favicon-32x32.png') }}">
     <link rel="mask-icon" href="{{asset('img/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
     <link rel="stylesheet" media="screen, print" href="{{ asset('backend/css/fa-brands.css') }}">
+    <!-- page related CSS below -->
+    <link rel="stylesheet" media="screen, print" href="{{ asset('backend/css/formplugins/select2/select2.bundle.css') }}">
 </head>
 <!-- BEGIN Body -->
 <!-- Possible Classes
@@ -222,7 +224,9 @@
                 + src/../jquery-snippets.js (core) -->
 <script src="{{ asset('backend/js/vendors.bundle.js') }}"></script>
 <script src="{{ asset('backend/js/app.bundle.js') }}"></script>
+<script src="{{ asset('backend/js/formplugins/select2/select2.bundle.js') }}"></script>
 <script>
+
     $("#js-login-btn").click(function(event)
     {
 
@@ -238,6 +242,10 @@
         form.addClass('was-validated');
         // Perform ajax submit here...
     });
+
+    $(()=>{
+        $('.select2').select2();
+    })
 
 </script>
 </body>

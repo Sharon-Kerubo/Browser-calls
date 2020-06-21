@@ -113,12 +113,14 @@
                         <div class="form-group row">
                             <div class="col-6 pl-1">
                                 <label class="form-label" for="hospital_id">Select the hospital you work in</label>
-                                <select class="form-control" name="hospital_id" id="hospital_id">
-                                    <option value="1">Alba Healthcare</option>
-                                    <option value="2">Mbagathi District Hospital</option>
-                                    <option value="3">The Aga Khan Hospital</option>
-                                    <option value="4">Kenyatta National Hospital</option>
-                                    <option value="5">Nairobi Hospital</option>
+                                <select class="select2 form-control" name="hospital_id" id="hospital_id">
+                                    @foreach($hospitals as $hospital)
+                                        <option value="{{ $hospital->id }}">{{ ucwords(strtolower($hospital->name)) }}</option>
+                                    @endforeach
+{{--                                    <option value="2">Mbagathi District Hospital</option>--}}
+{{--                                    <option value="3">The Aga Khan Hospital</option>--}}
+{{--                                    <option value="4">Kenyatta National Hospital</option>--}}
+{{--                                    <option value="5">Nairobi Hospital</option>--}}
                                 </select>
                             </div>
                             <div class="col-6 pl-1">

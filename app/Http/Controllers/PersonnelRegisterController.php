@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Hospital;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -34,7 +35,9 @@ class PersonnelRegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.doctor-register',['specs'=>Collect(\App\Specialization::all())]);
+        $hospitals = collect(Hospital::all());
+        return view('auth.doctor-register',['specs'=>Collect(\App\Specialization::all()),
+            'hospitals'=>$hospitals]);
     }
 
     public function register(Request $request)

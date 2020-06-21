@@ -14,6 +14,8 @@
     <meta name="msapplication-tap-highlight" content="no">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <!-- base css -->
     <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="{{ asset('backend/css/vendors.bundle.css') }}">
     <link id="appbundle" rel="stylesheet" media="screen, print" href="{{ asset('backend/css/app.bundle.css') }}">
@@ -24,6 +26,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend/img/favicon/favicon-32x32.png') }}">
     <link rel="mask-icon" href="{{asset('img/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
     <link rel="stylesheet" media="screen, print" href="{{ asset('backend/css/fa-brands.css') }}">
+
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('DataTables-1.10.21/datatables.min.css')}}"/>--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
+    <link rel="stylesheet" media="screen, print" href="{{asset('backend/css/notifications/toastr/toastr.css')}}">
 </head>
 <!-- BEGIN Body -->
 <!-- Possible Classes
@@ -210,6 +216,7 @@
         </div>
     </div>
 </div>
+
 <!-- END Page Wrapper -->
 <!-- BEGIN Quick Menu -->
 <!-- to add more items, please make sure to change the variable '$menu-items: number;' in your _page-components-shortcut.scss -->
@@ -229,7 +236,82 @@
                 + src/../jquery-snippets.js (core) -->
 <script src="{{ asset('backend/js/vendors.bundle.js') }}"></script>
 <script src="{{ asset('backend/js/app.bundle.js') }}"></script>
+<script src="{{ asset('backend/js/notifications/toastr/toastr.js') }}"></script>
+
+{{--<script type="text/javascript" src="{{asset('jquery/jquery-3.5.1.min.js')}}"></script>--}}
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>
+<script>
+    $(()=>{
+        const doctors_table = $('#table_doctors');
+        const d_table = doctors_table.DataTable({
+            'ajax': {
+                url: "{{ route('backend.get.doctors') }}",
+                dataSrc: ''
+            },
+            columns: [
+                {data: 'number'},
+                {data: 'full_name'},
+                {data: 'phone_number'},
+                {data: 'email'},
+                {data: 'license_no'},
+                {data: 'hospital_name'},
+            ]
+        });
+        console.log(d_table);
+
+        {{--const doctors_datatable = doctors_table.DataTable({--}}
+        {{--    ajax: {--}}
+        {{--        url: "{{ route('backend.get.doctors') }}",--}}
+        {{--        dataType:'json',--}}
+        {{--        dataSrc: ''--}}
+        {{--    },--}}
+        {{--    columns: [--}}
+        {{--        {data: 'number'},--}}
+        {{--        {data: 'full_name'},--}}
+        {{--        {data: 'phone_number'},--}}
+        {{--        {data: 'email'},--}}
+        {{--        {data: 'license_no'},--}}
+        {{--        {data: 'license_doc'},--}}
+        {{--        {data: 'hospital_name'},--}}
+        {{--        {data: 'actionss'},--}}
+        {{--    ]--}}
+        {{--});--}}
+    })
+</script>
+
+@stack('backend-scripts')
+
+<script>
+    function isEmpty(value){
+        return (value == null || value.length === 0);
+    }
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": 300,
+        "hideDuration": 100,
+        "timeOut": 5000,
+        "extendedTimeOut": 1000,
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+</script>
+{{--<script type="text/javascript" src="{{asset('DataTables-1.10.21/datatables.min.js')}}"></script>--}}
 <!--This page contains the basic JS and CSS files to get started on your project. If you need aditional addon's or plugins please see scripts located at the bottom of each page in order to find out which JS/CSS files to add.-->
+{{-- MODALS --}}
+@include('backend.facilities')
+@include('backend.services')
+{{-- END MODALS --}}
+
+
+
 </body>
 <!-- END Body -->
 </html>

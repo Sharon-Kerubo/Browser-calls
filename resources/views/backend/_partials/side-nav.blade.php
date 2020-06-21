@@ -37,11 +37,45 @@
         -->
         <ul id="js-nav-menu" class="nav-menu">
             <li class="{{ Route::current()->getName() == 'backend.dashboard' ? ' active' : '' }}">
-                <a href="{{route('backend.dashboard')}}" title="Blank Project" data-filter-tags="blank page">
+                <a href="{{route('backend.dashboard')}}" title="Dashboard" data-filter-tags="dashboard">
                     <i class="fal fa-globe"></i>
                     <span class="nav-link-text" data-i18n="nav.blankpage">Dashboard</span>
                 </a>
             </li>
+            @can('manageSystem',App\User::class)
+                <li class="nav-title">MANAGE USERS</li>
+
+                <li class="{{ Route::current()->getName() == 'backend.manage.doctors' ? ' active' : '' }}">
+                    <a href="{{route('backend.manage.doctors')}}" title="Doctors" data-filter-tags="doctors">
+                        <i class="fal fa-hospital-user"></i>
+                        <span class="nav-link-text" data-i18n="nav.blankpage">Doctors</span>
+                    </a>
+                </li>
+
+                <li class="nav-title">SYSTEM SETTINGS</li>
+
+                <li class="{{ Route::current()->getName() == 'backend.manage.hospitals' ? ' active' : '' }}">
+                    <a href="{{ route('backend.manage.hospitals') }}" title="Hospitals" data-filter-tags="hospitals" >
+                        <i class="fal fa-hospital"></i>
+                        <span class="nav-link-text" data-i18n="nav.hospitals">Hospitals</span>
+                    </a>
+                </li>
+                <li class="{{ Route::current()->getName() == '' ? ' active' : '' }}">
+                    <a href="#facilities_modal" title="Facilities" data-filter-tags="facilities" data-toggle="modal"
+                       data-target="#facilities_modal">
+                        <i class="fal fa-cog"></i>
+                        <span class="nav-link-text" data-i18n="nav.facilities" data-toggle="modal"
+                              data-target="#facilities_modal">Facilities</span>
+                    </a>
+                </li>
+                <li class="{{ Route::current()->getName() == '' ? ' active' : '' }}">
+                    <a href="#services_modal" title="Services" data-filter-tags="services" data-toggle="modal"
+                       data-target="#services_modal">
+                        <i class="fal fa-cogs"></i>
+                        <span class="nav-link-text" data-i18n="nav.services">Services</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
         <div class="filter-message js-filter-message bg-success-600"></div>
     </nav>

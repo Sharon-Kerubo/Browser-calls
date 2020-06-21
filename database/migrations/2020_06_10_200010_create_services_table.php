@@ -16,7 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('is_suspended');
+            $table->boolean('is_suspended')->default(0);
             $table->timestamps();
         });
     }
