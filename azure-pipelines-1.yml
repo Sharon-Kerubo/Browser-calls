@@ -45,7 +45,7 @@ steps:
 - script: |
     cd /home/vsts/work/1/s/
     php artisan key:generate
-    php artisan migrate
+    sudo php artisan migrate
   displayName: 'Running Migrations'
 
 - script: |
