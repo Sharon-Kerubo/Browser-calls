@@ -15,7 +15,6 @@ use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
-    use Notifiable;
     use SoftDeletes;
 
     /**
