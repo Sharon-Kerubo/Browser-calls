@@ -48,6 +48,7 @@ steps:
     cd /home/vsts/work/1/s/
     php artisan key:generate
     php artisan migrate --force
+    php artisan passport:install
   displayName: 'Running Migrations'
 
 - script: |
