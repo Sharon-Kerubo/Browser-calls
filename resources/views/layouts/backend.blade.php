@@ -26,10 +26,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend/img/favicon/favicon-32x32.png') }}">
     <link rel="mask-icon" href="{{asset('img/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
     <link rel="stylesheet" media="screen, print" href="{{ asset('backend/css/fa-brands.css') }}">
+    <link rel="stylesheet" media="screen, print" href="{{asset('backend/css/theme-demo.css')}}">
 
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('DataTables-1.10.21/datatables.min.css')}}"/>--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.css"/>
     <link rel="stylesheet" media="screen, print" href="{{asset('backend/css/notifications/toastr/toastr.css')}}">
+    <link rel="stylesheet" media="screen, print" href="{{asset('backend/css/notifications/sweetalert2/sweetalert2.bundle.css')}}">
 </head>
 <!-- BEGIN Body -->
 <!-- Possible Classes
@@ -236,7 +238,9 @@
                 + src/../jquery-snippets.js (core) -->
 <script src="{{ asset('backend/js/vendors.bundle.js') }}"></script>
 <script src="{{ asset('backend/js/app.bundle.js') }}"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script src="{{ asset('backend/js/notifications/toastr/toastr.js') }}"></script>
+<script src="{{asset('backend/js/notifications/sweetalert2/sweetalert2.bundle.js')}}"></script>
 
 {{--<script type="text/javascript" src="{{asset('jquery/jquery-3.5.1.min.js')}}"></script>--}}
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/datatables.min.js"></script>

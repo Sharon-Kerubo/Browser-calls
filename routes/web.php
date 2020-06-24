@@ -28,7 +28,8 @@ Route::post('/p-register', 'PersonnelRegisterController@register')->name('backen
 Route::get('/home', 'WebsiteController@index')->name('website.home')->middleware('verified');;
 Route::get('/dashboard', 'BackendController@dashboard')->name('backend.dashboard')->middleware('verified');
 // Doctors
-Route::get('/manage-doctors', 'BackendController@manageDoctors')->name('backend.manage.doctors')->middleware('verified');
+Route::get('/manage_doctors', 'BackendController@manage_doctors')->name('backend.manage.doctors')->middleware('verified');
+Route::post('/verify_doctor', 'BackendController@verify_doctor')->name('backend.verify.doctor')->middleware('verified');
 //Facilities
 Route::post('/add_facilities','BackendController@add_facilities')->name('add.facilities')->middleware('verified');
 Route::get('/get_facilities','BackendController@get_facilities')->name('backend.get.facilities')->middleware('verified');
@@ -38,4 +39,4 @@ Route::post('/add_services','BackendController@add_services')->name('add.service
 //Hospitals
 Route::post('/migrate_hospitals','BackendController@migrate_hospitals')->name('backend.migrate.hospitals')->middleware('verified');
 Route::get('/manage_hospitals','BackendController@manage_hospitals')->name('backend.manage.hospitals')->middleware('verified');
-Route::get('/get_doctors_json','BackendController@get_doctors')->name('backend.get.doctors')->middleware('verified');
+Route::get('/get_doctors_json','BackendController@get_doctors_json')->name('backend.get.doctors')->middleware('verified');

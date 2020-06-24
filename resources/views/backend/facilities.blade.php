@@ -25,7 +25,7 @@
                                     <div class="row">
                                         <div class="col-6 pl-1">
                                             <label class="form-label" for="name">Name</label>
-                                            <input id="name" type="text" class="form-control @error('email') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                            <input id="facility_name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                             <div id="name-feedback" class="invalid-feedback">No, you missed this one.</div>
                                         </div>
                                         <div class="col-3 pl-1">
@@ -77,6 +77,15 @@
 <script>
 
     $(()=>{
+        Pace.options = {
+            ajax: true,
+            // Disable the 'elements' source
+            elements: false,
+
+            // Only show the progress on regular and ajax-y page navigation,
+            // not every request
+            restartOnRequestAfter: false
+        }
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -100,7 +109,7 @@
         $("#submit-facility").on('click',function(event)
         {
             event.preventDefault();
-            let name = $('#service_name').val();
+            let name = $('#facility_name').val();
             if (isEmpty(name)){
                 toastr["error"]("Name is required!");
                 return;
