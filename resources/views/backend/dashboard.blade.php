@@ -21,53 +21,53 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div id="panel-1" class="panel">
-                        <div class="panel-hdr">
-                            <h2>
-                                Application Feedback <span class="fw-300"><i></i></span>
-                            </h2>
-                            <div class="panel-toolbar">
-                                <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                                <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
-                                <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+                            <div class="panel-hdr">
+                                <h2>
+                                    Application Feedback <span class="fw-300"><i></i></span>
+                                </h2>
+                                <div class="panel-toolbar">
+                                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel-container show">
-                            <div class="panel-content">
-                                <div class="panel-tag">
-                                    You have not been approved yet to join the Tribore Health Platform as a medical practitioner. Once you are approved you will receive an email. Please be patient as we expedite the process on our end.
+                            <div class="panel-container show">
+                                <div class="panel-content">
+                                    <div class="panel-tag">
+                                        Approval successful
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             @endcan
-        @cannot('accessPortal')
-            <div class="row">
-                <div class="col-xl-12">
-                    <div id="panel-1" class="panel">
-                        <div class="panel-hdr">
-                            <h2>
-                                Application Feedback <span class="fw-300"><i></i></span>
-                            </h2>
-                            <div class="panel-toolbar">
-                                <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                                <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
-                                <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+            @cannot('accessPortal', App\User::class)
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div id="panel-1" class="panel">
+                            <div class="panel-hdr">
+                                <h2>
+                                    Application Feedback <span class="fw-300"><i></i></span>
+                                </h2>
+                                <div class="panel-toolbar">
+                                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel-container show">
-                            <div class="panel-content">
-                                <div class="panel-tag">
-                                    Approval successful
+                            <div class="panel-container show">
+                                <div class="panel-content">
+                                    <div class="panel-tag">
+                                        You have not been approved yet to join the Tribore Health Platform as a medical practitioner. Once you are approved you will receive an email. Please be patient as we expedite the process on our end.
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endcannot
-        @endcan
+            @endcannot
+    @endcan
 
     @can('manageSystem',App\User::class)
         <div class="row">

@@ -18,6 +18,6 @@ class UserPolicy
    }
 
    function accessPortal(User $user){
-       return $user->is_verified !== null;
+       return $user->is_verified === 1;
    }
 }
