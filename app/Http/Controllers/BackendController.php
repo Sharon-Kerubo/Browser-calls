@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class BackendController extends Controller
 {
     public function dashboard(Request $request){
+        ini_set('memory_limit', '2048M');
         $users = count(User::all()->where('role_id',4));
         $doctors = count(User::cursor()->filter(function ($user){
             return $user->role_id !== 1 && $user->role_id !== 4;
@@ -23,24 +24,29 @@ class BackendController extends Controller
             'doctors'=>$doctors, 'hospitals'=>$hospitals]);
     }
 
-    public function manageDoctors(Request $request){
+    public function manage_doctors(Request $request){
         return view('backend.doctors');
     }
 
-    public function get_doctors(){
-        $doctors = User::all()
-            ->where('role_id','!=',4)
-            ->where('role_id','!=',1)->toArray();
+    public function verify_doctor(Request $request){
+        $id = $request->id;
+        User::where('id',$id)->update(['is_verified'=>1]);
+        return response()->json(['ok'=>true,'msg'=>$request->name.' has been verified']);
+    }
+
+    public function get_doctors_json(){
+        $doctors = User::where('role_id','!=',4)
+            ->where('role_id','!=',1)->get();
         $number = 1;
         foreach ($doctors as $key => $value) {
             $doctors[$key]['number'] = $number++;
             $doctors[$key]['full_name'] = $doctors[$key]['first_name']. ' ' . $doctors[$key]['last_name'];
             $doctors[$key]['hospital_name'] = ucwords(strtolower(User::find($doctors[$key]['id'])->hospital->name));
-            $doctors[$key]['license_doc'] = '<button id="verify-user" type="button" class="btn btn-xs btn-primary waves-effect waves-themed" data-toggle="modal"
+            $doctors[$key]['license_doc'] = '<button id="verify-doc" type="button" class="btn btn-xs btn-primary waves-effect waves-themed" data-toggle="modal"
                        data-target="#license_modal">View</button>';
             $doctors[$key]['actions'] =
                 ($doctors[$key]['is_verified'] ?
-                    "<span class='fw-300'></span> <sup class='badge badge-success fw-500'>VERIFIED</sup>" :
+                    "<span class='fw-300'></span> <sup class='badge badge-success fw-500 mt-2'>VERIFIED</sup>" :
                     '<button id="verify-user" type="button" class="btn btn-xs btn-danger waves-effect waves-themed">Verify</button>');
         }
         return response()->json($doctors);
